@@ -1,5 +1,6 @@
 package utils;
 
+import config.UserModel;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -15,15 +16,17 @@ public class Utils {
         double randomNumber=Math.random()*(max-min)+min;
         return (int) Math.round(randomNumber);
     }
-    public static void saveJSONData(String firstName, String email, String password, String phoneNumber) throws IOException, ParseException {
+    public static void saveJSONData(UserModel userModel) throws IOException, ParseException {
         String filePath="./src/test/resources/Users.json";
         JSONParser jsonParser=new JSONParser();
         JSONArray jsonArray= (JSONArray) jsonParser.parse(new FileReader(filePath));
         JSONObject jsonObject=new JSONObject();
-        jsonObject.put("firstName",firstName);
-        jsonObject.put("email",email);
-        jsonObject.put("password",password);
-        jsonObject.put("phoneNumber",phoneNumber);
+        jsonObject.put("firstName",userModel.getFirstname());
+        jsonObject.put("lastName",userModel.getLastname());
+        jsonObject.put("email",userModel.getEmail());
+        jsonObject.put("password",userModel.getPassword());
+        jsonObject.put("phoneNumber",userModel.getPhonenumber());
+        jsonObject.put("address",userModel.getAddress());
 
         jsonArray.add(jsonObject);
 
