@@ -5,6 +5,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -40,6 +42,10 @@ public class Utils {
         JSONParser jsonParser=new JSONParser();
         JSONArray jsonArray= (JSONArray) jsonParser.parse(new FileReader(filePath));
         return (JSONObject) jsonArray.get(jsonArray.size()-1);
+    }
+    public static void scrollDown(WebDriver driver, int px){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0, "+px+");");
     }
 
 }

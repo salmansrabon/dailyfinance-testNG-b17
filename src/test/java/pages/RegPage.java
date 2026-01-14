@@ -32,7 +32,7 @@ public class RegPage {
         PageFactory.initElements(driver,this);
     }
 
-    public void doReg(UserModel userModel){
+    public void doReg(UserModel userModel) throws InterruptedException {
         txtFirstName.sendKeys(userModel.getFirstname());
         txtLastName.sendKeys(userModel.getLastname()==null?"":userModel.getLastname());
         txtEmail.sendKeys(userModel.getEmail());
@@ -42,5 +42,6 @@ public class RegPage {
         rbGender.get(0).click();
         chkAgreement.click();
         btnRegister.click();
+        Thread.sleep(5000);
     }
 }

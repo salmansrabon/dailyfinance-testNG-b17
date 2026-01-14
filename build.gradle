@@ -19,3 +19,15 @@ dependencies {
     // Source: https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
     implementation("com.googlecode.json-simple:json-simple:1.1.1")
 }
+test{
+    useTestNG(){
+        if(project.hasProperty("email") && project.hasProperty("password")){
+            systemProperties.put("email",project.property("email"))
+            systemProperties.put("password",project.property("password"))
+
+            print(project.property("email"))
+            print(project.property("password"))
+        }
+        suites "./src/test/resources/suite.xml"
+    }
+}
