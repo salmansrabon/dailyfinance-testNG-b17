@@ -12,7 +12,7 @@ import utils.Utils;
 import java.io.IOException;
 
 public class RegTest extends Setup {
-    @Test (priority = 1, description = "User reg only mandatory fields")
+    @Test (priority = 1, description = "User reg only mandatory fields", groups = "smoke")
     public void userRegistration() throws IOException, ParseException, InterruptedException {
         RegPage regPage=new RegPage(driver);
         Faker faker=new Faker();
@@ -29,7 +29,7 @@ public class RegTest extends Setup {
         regPage.doReg(userModel);
         Utils.saveJSONData(userModel);
     }
-    //@Test (priority = 2, description = "User reg with all fields")
+    @Test (priority = 2, description = "User reg with all fields")
     public void fullUserRegistration() throws IOException, ParseException, InterruptedException {
         RegPage regPage=new RegPage(driver);
         Faker faker=new Faker();

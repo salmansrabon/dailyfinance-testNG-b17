@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<suite name="Daily finance automation">
+    <test name="User Registration">
+        <groups>
+            <run>
+                <include name="smoke"></include>
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.RegTest"></class>
+        </classes>
+    </test>
+    <test name="User Login">
+        <groups>
+            <run>
+                <include name="smoke"></include>
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.LoginTest"></class>
+        </classes>
+    </test>
+    <test name="Add new item">
+        <groups>
+            <run>
+                <include name="smoke"></include>
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.DashboardTest"></class>
+        </classes>
+    </test>
+    <test name="Admin Login">
+        <classes>
+            <class name="tests.AdminLogin"></class>
+        </classes>
+    </test>
+
+</suite>

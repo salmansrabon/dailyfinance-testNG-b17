@@ -24,7 +24,7 @@ public class LoginTest extends Setup {
         Assert.assertTrue(validationErrorActual.contains(validationErrorExpected));
         clearData();
     }
-    @Test(priority = 2, description = "Verify that user can login with correct credential")
+    @Test(priority = 2, description = "Verify that user can login with correct credential", groups = "smoke")
     public void  userLogin() throws InterruptedException, IOException, ParseException {
         LoginPage loginPage=new LoginPage(driver);
         JSONObject userObj= Utils.readJSONData("./src/test/resources/Users.json");
