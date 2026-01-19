@@ -20,6 +20,7 @@ dependencies {
     implementation("com.googlecode.json-simple:json-simple:1.1.1")
     // Source: https://mvnrepository.com/artifact/io.qameta.allure/allure-testng
     implementation("io.qameta.allure:allure-testng:2.32.0")
+    testImplementation("io.rest-assured:rest-assured:6.0.0")
 }
 test{
     useTestNG(){
@@ -33,6 +34,6 @@ test{
         if(project.hasProperty("suite")){
             systemProperties.put("suite",project.property("suite"))
         }
-        suites "./src/test/resources/"+project.property("suite")
+        //suites "./src/test/resources/"+project.property("suite")
     }
 }
