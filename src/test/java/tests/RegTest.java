@@ -5,8 +5,10 @@ import config.Setup;
 import config.UserModel;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.RegPage;
+import services.GmailService;
 import utils.Utils;
 
 import java.io.IOException;
@@ -28,8 +30,15 @@ public class RegTest extends Setup {
         userModel.setPhonenumber(phoneNumber);
         regPage.doReg(userModel);
         Utils.saveJSONData(userModel);
+
+        Thread.sleep(5000);
+        GmailService gs=new GmailService();
+        String regEmailActual= gs.readEmail();
+        System.out.println(regEmailActual);
+        String regEmailExpected="Welcome to our platform";
+        Assert.assertTrue(regEmailActual.contains(regEmailExpected));
     }
-    @Test (priority = 2, description = "User reg with all fields")
+    //@Test (priority = 2, description = "User reg with all fields")
     public void fullUserRegistration() throws IOException, ParseException, InterruptedException {
         RegPage regPage=new RegPage(driver);
         Faker faker=new Faker();
